@@ -1,193 +1,1662 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pyzeit Corporate Solutions</title>
+    <title>Pyzeit Corporate Solutions — Legal. Brand. Tech. Growth.</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
-        :root {
-            --py-dark-blue: #002D62;
-            --py-cyan: #00FFFF;
-            --py-purple: #8A2BE2;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Highlight effect for the top logo */
-        .logo-highlight {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
-            border: 1px solid rgba(138, 43, 226, 0.1);
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f8f9fc;
+            color: #1a1a2e;
         }
 
-        .gradient-text {
-            background: linear-gradient(to right, var(--py-cyan), var(--py-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
         }
 
         html {
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        .container-normal {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        /* Standard Template Sizing */
-        .container-normal {
-            max-width: 1400px;
-            margin: 0 auto;
+        .gradient-text {
+            background: linear-gradient(135deg, #00BFFF, #8A2BE2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== HERO DIAGRAM BACKGROUND ===== */
+        .hero-glow {
+            position: relative;
+            overflow: hidden;
+            /* Dark Blue Base */
+            background: #002D62;
+        }
+
+        /* Constellation / Network Diagram Overlay */
+        .hero-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* SVG Network Diagram */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Large Faint Glow Blob */
+        .hero-glow::after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-glow>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== DIAGRAM PATTERNS FOR OTHER SECTIONS ===== */
+        .blueprint-grid {
+            /* Technical Grid Pattern */
+            background-color: #ffffff;
+            background-image: linear-gradient(#e5e7eb 1px, transparent 1px),
+                linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #e8ecf4;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(0, 45, 98, 0.08);
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-card.purple-accent::after {
+            background: #8A2BE2;
+        }
+
+        .service-card.cyan-accent::after {
+            background: #00BFFF;
+        }
+
+        .service-card.blue-accent::after {
+            background: #1d4ed8;
+        }
+
+        .service-card.indigo-accent::after {
+            background: #4f46e5;
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8A2BE2;
+            transition: width 0.25s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .cta-gradient {
+            background: linear-gradient(135deg, #002D62 0%, #8A2BE2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.06) 0%, transparent 50%);
+            animation: rotate 40s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .cta-gradient>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .founder-img-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .founder-img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00BFFF, #8A2BE2);
+            z-index: 0;
+        }
+
+        .founder-img {
+            position: relative;
+            z-index: 1;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: contain;
+            border: 5px solid white;
+            box-shadow: 0 12px 40px rgba(0, 45, 98, 0.15);
+        }
+
+        .faq-item {
+            border: 1px solid #e8ecf4;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 16px rgba(0, 45, 98, 0.06);
+        }
+
+        .faq-question {
+            cursor: pointer;
+            padding: 1.1rem 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #002D62;
+            background: white;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: #fafbfe;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: #fafbfe;
+        }
+
+        .faq-answer.open {
+            max-height: 350px;
+            padding: 0 1.4rem 1.1rem;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .serve-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .serve-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 26px;
+        }
+
+        .process-step {
+            position: relative;
+            padding-left: 4rem;
+            padding-bottom: 2rem;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 44px;
+            bottom: 0;
+            width: 2px;
+            background: #e8ecf4;
+        }
+
+        .process-step:last-child::before {
+            display: none;
+        }
+
+        .process-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #002D62;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+        }
+
+        .value-card {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1.5rem;
+        }
+
+        .get-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e8ecf4;
+        }
+
+        .get-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 20px;
+        }
+
+        .service-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .expanding-note {
+            background: linear-gradient(135deg, #f0f7ff, #f5f0ff);
+            border: 1px solid #e0e7ff;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        /* ===== LOGO STYLES ===== */
+        .logo-block {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                height: 68px;
+            }
+        }
+
+        .footer-logo-img {
+            height: 70px;
+            /* Made larger for visibility */
+            width: auto;
+            object-fit: contain;
+        }
+
+        #chatbot-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8A2BE2, #002D62);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(138, 43, 226, 0.4);
+            transition: transform 0.2s;
+        }
+
+        #chatbot-btn:hover {
+            transform: scale(1.08);
+        }
+
+        #chatbot-window {
+            position: fixed;
+            bottom: 92px;
+            right: 24px;
+            z-index: 9998;
+            width: 340px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+        }
+
+        #chatbot-window.open {
+            display: flex;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #002D62, #8A2BE2);
+            padding: 1rem 1.25rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .quick-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f4f5fb;
+            border: 1px solid #e8ecf4;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #002D62;
+            font-weight: 500;
+        }
+
+        .quick-btn:hover {
+            background: #002D62;
+            color: white;
+            border-color: #002D62;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 9999;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #25D366;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+        }
+
+        .pillar-tab {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #e8ecf4;
+            white-space: nowrap;
+        }
+
+        .pillar-tab.active {
+            background: #002D62;
+            color: white;
+            border-color: #002D62;
+        }
+
+        .pillar-tab:not(.active) {
+            background: white;
+            color: #002D62;
+        }
+
+        .pillar-tab:not(.active):hover {
+            background: #f0f1f5;
+        }
+
+        /* Decorative Tech Schematic for Stats Area */
+        .stats-schematic {
+            position: absolute;
+            top: 50%;
+            right: -50px;
+            transform: translateY(-50%);
+            width: 300px;
+            height: 300px;
+            opacity: 0.1;
+            pointer-events: none;
+            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='100' r='90' stroke='white' stroke-width='2' fill='none'/%3E%3Ccircle cx='100' cy='100' r='60' stroke='white' stroke-width='2' fill='none'/%3E%3Ccircle cx='100' cy='100' r='30' stroke='white' stroke-width='2' fill='none'/%3E%3Cline x1='100' y1='10' x2='100' y2='190' stroke='white' stroke-width='1'/%3E%3Cline x1='10' y1='100' x2='190' y2='100' stroke='white' stroke-width='1'/%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+        /* ===== PHILOSOPHY SECTION (VISION/MISSION) STYLES ===== */
+        .philosophy-card {
+            border-left: 4px solid #e5e7eb;
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .philosophy-title {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #1a202e;
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-content {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .vision-icon,
+        .mission-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
         }
     </style>
 </head>
 
-<body class="bg-gray-50">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md py-4 px-6 border-b border-gray-100 shadow-sm">
-        <div class="container-normal flex justify-between items-center">
-            <!-- HIGHLIGHTED LOGO -->
-            <div class="logo-highlight">
-                <img src="logo.jpg" alt="Pyzeit Logo" class="h-40 md:h-30 object-contain">
+    <!-- ═════════════ NAVIGATION ═════════════ -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-md">
+        <div class="container-normal flex justify-between items-center h-16 md:h-[80px]">
+            <a href="#" class="logo-block">
+                <!-- HEADER LOGO - Large and Visible -->
+                <img src="https://z-cdn-media.chatglm.cn/files/b32af940-6b89-40f4-adb0-31a07624901d.jpg?auth_key=1878090161-caa0df92ef1d428397a995a6f65efbb9-0-bd209449fafcee4ec83e9b866d518cf3"
+                    alt="Pyzeit Corporate Solutions" class="logo-img">
+            </a>
+            <div class="hidden md:flex items-center gap-7 text-[#002D62]">
+                <a href="#services" class="nav-link hover:text-[#8A2BE2] transition">Services</a>
+                <a href="#process" class="nav-link hover:text-[#8A2BE2] transition">How It Works</a>
+                <a href="#founder" class="nav-link hover:text-[#8A2BE2] transition">Founder</a>
+                <a href="#philosophy" class="nav-link hover:text-[#8A2BE2] transition">Philosophy</a>
+                <a href="#faq" class="nav-link hover:text-[#8A2BE2] transition">FAQ</a>
+                <a href="#contact"
+                    class="bg-[#002D62] text-white px-6 py-2.5 rounded-lg hover:bg-[#8A2BE2] transition text-sm font-semibold shadow-sm hover:shadow">
+                    Talk to Us
+                </a>
+                <!-- Added Contact Link in Nav -->
+                <a href="#contact"
+                    class="ml-3 text-sm font-semibold text-gray-500 hover:text-[#002D62] hover:bg-gray-50 px-2 py-1 rounded-lg transition hidden lg:block">
+                    Contact
+                </a>
+                <!-- Added FAQ Link in Nav -->
+                <a href="#faq"
+                    class="ml-3 text-sm font-semibold text-gray-500 hover:text-[#002D62] hover:bg-gray-50 px-2 py-1 rounded-lg transition hidden lg:block">
+                    FAQ
+                </a>
             </div>
-
-            <div class="hidden md:flex space-x-8 font-bold text-[#002D62]">
-                <a href="#about" class="hover:text-purple-600 transition">THE BRIDGE</a>
-                <a href="#services" class="hover:text-purple-600 transition">SERVICES</a>
-                <a href="#contact-section"
-                    class="bg-[#002D62] text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">CONTACT</a>
-            </div>
+            <button class="md:hidden text-[#002D62] p-2"
+                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-3 text-[#002D62] text-sm font-semibold shadow-lg">
+            <a href="#services" class="block py-2 hover:text-[#8A2BE2]">Services</a>
+            <a href="#process" class="block py-2 hover:text-[#8A2BE2]">How It Works</a>
+            <a href="#founder" class="block py-2 hover:text-[#8A2BE2]">Founder</a>
+            <a href="#philosophy" class="block py-2 hover:text-[#8A2BE2]">Philosophy</a>
+            <a href="#faq" class="block py-2 hover:text-[#8A2BE2]">FAQ</a>
+            <a href="#contact" class="block bg-[#002D62] text-white px-4 py-3 rounded-lg text-center">Talk to Us</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-40 pb-20 bg-[#002D62] text-white px-6">
-        <div class="container-normal text-center md:text-left">
-            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
-                Your Business, <br><span class="gradient-text">Fully Integrated.</span>
-            </h1>
-            <p class="text-xl md:text-2xl font-semibold mb-10 text-cyan-400 uppercase tracking-widest">
-                From Legal Foundations to Digital Dominance
-            </p>
 
-            <div class="grid md:grid-cols-2 gap-10 border-l-4 border-purple-500 pl-6 mb-12">
-                <p class="text-lg italic opacity-90">
-                    <span class="text-cyan-400 font-bold">Vision:</span> "To be the global cornerstone where business
-                    logic meets creative magic."
-                </p>
-                <p class="text-lg opacity-90">
-                    <span class="text-cyan-400 font-bold">Mission:</span> "To simplify the complex. We bridge compliance
-                    and creativity."
-                </p>
-            </div>
-
-            <a href="#contact-section"
-                class="bg-purple-600 text-white px-10 py-4 text-lg font-bold rounded-md hover:bg-purple-700 transition shadow-xl uppercase">
-                Contact Our Founders
-            </a>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="py-20 px-6 bg-white">
+    <!-- ═════════════ HERO ═════════════ -->
+    <section class="pt-28 md:pt-40 pb-20 md:pb-28 hero-glow">
         <div class="container-normal">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-[#002D62] mb-4">Core-4 Strategy</h2>
-                <div class="h-1 w-20 bg-purple-600 mx-auto"></div>
-            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center relative">
+                <div class="relative z-10">
+                    <h1 class="text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.1] mb-6">
+                        One Partner.<br>
+                        <span class="gradient-text">Every Stage.</span>
+                    </h1>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Box 1 -->
-                <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
-                    <h3 class="font-bold text-purple-700 mb-4 uppercase">The Foundation</h3>
-                    <ul class="text-gray-600 space-y-2 text-sm">
-                        <li>• Legal Compliance</li>
-                        <li>• Financial Assistance</li>
-                        <li>• Accounting</li>
-                    </ul>
+                    <p class="text-base md:text-lg text-white/70 mb-8 leading-relaxed max-w-lg">
+                        Most businesses are stitched together from disconnected vendors — a lawyer here, a designer
+                        there, a developer somewhere else. Pyzeit eliminates that chaos. One team handles your legal
+                        setup, brand identity, web presence, and digital growth — as one unified system.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <a href="#contact"
+                            class="bg-white text-[#002D62] px-7 py-3.5 rounded-lg font-bold hover:bg-gray-100 transition text-sm shadow-lg">
+                            Start a Conversation →
+                        </a>
+                        <a href="#services"
+                            class="border border-white/25 text-white px-7 py-3.5 rounded-lg font-medium hover:bg-white/10 transition text-sm">
+                            Explore Services
+                        </a>
+                    </div>
+
+                    <div class="flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/40">
+                        <span>✓ Project-based, no lock-ins</span>
+                        <span>✓ Founder-led delivery</span>
+                        <span>✓ Transparent pricing upfront</span>
+                    </div>
                 </div>
-                <!-- Box 2 -->
-                <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
-                    <h3 class="font-bold text-cyan-600 mb-4 uppercase">The Identity</h3>
-                    <ul class="text-gray-600 space-y-2 text-sm">
-                        <li>• Logo Design</li>
-                        <li>• Branding</li>
-                        <li>• Personal Branding</li>
-                    </ul>
-                </div>
-                <!-- Box 3 -->
-                <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
-                    <h3 class="font-bold text-blue-800 mb-4 uppercase">The Engine</h3>
-                    <ul class="text-gray-600 space-y-2 text-sm">
-                        <li>• Web Development</li>
-                        <li>• UI/UX Design</li>
-                    </ul>
-                </div>
-                <!-- Box 4 -->
-                <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
-                    <h3 class="font-bold text-indigo-700 mb-4 uppercase">The Growth</h3>
-                    <ul class="text-gray-600 space-y-2 text-sm">
-                        <li>• Digital Marketing</li>
-                        <li>• Advertising</li>
-                        <li>• Business Dev</li>
-                    </ul>
+
+                <div class="hidden md:grid grid-cols-2 gap-4 relative z-10">
+                    <!-- Decorative Background Schematic -->
+                    <div class="stats-schematic"></div>
+
+                    <div class="stat-card backdrop-blur-sm">
+                        <div class="text-3xl font-extrabold text-white mb-1">Full Suite</div>
+                        <div class="text-white/40 text-sm">Integrated Services</div>
+                    </div>
+                    <div class="stat-card backdrop-blur-sm">
+                        <div class="text-3xl font-extrabold text-white mb-1">4</div>
+                        <div class="text-white/40 text-sm">Integrated Pillars</div>
+                    </div>
+                    <div class="stat-card backdrop-blur-sm">
+                        <div class="text-3xl font-extrabold text-white mb-1">1</div>
+                        <div class="text-white/40 text-sm">Single Point of Contact</div>
+                    </div>
+                    <div class="stat-card backdrop-blur-sm">
+                        <div class="text-3xl font-extrabold text-white mb-1">0</div>
+                        <div class="text-white/40 text-sm">Inter-Vendor Delays</div>
+                    </div>
+                    <div class="col-span-2 bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-md">
+                        <p class="text-sm text-white/60 italic leading-relaxed">"We didn't build Pyzeit to be another
+                            agency. We built it because we experienced chaos of managing five vendors for one
+                            business — and knew there had to be a better way."</p>
+                        <p class="text-[#00BFFF] text-xs font-bold mt-3 uppercase tracking-wider">— Why Pyzeit Exists
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Founders Section -->
-    <section id="about" class="py-20 px-6 bg-gray-100">
-        <div class="container-normal flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-                <img src="IMG_5420.PNG" alt="Founders" class="rounded-2xl shadow-lg w-full">
+    <!-- Mobile stats -->
+    <section class="bg-white border-b border-gray-100 py-6 md:hidden">
+        <div class="container-normal grid grid grid-cols-4 gap-3 text-center">
+            <div>
+                <div class="text-xl font-extrabold text-[#002D62]">Full</div>
+                <div class="text-gray-400 text-[10px]">Suite</div>
             </div>
-            <div class="md:w-1/2 text-center md:text-left">
-                <h2 class="text-4xl font-bold text-[#002D62] mb-6">The sole of Pyzeit</h2>
-                <p class="text-2xl italic text-gray-700 leading-relaxed">
-                    "We treat our clients' businesses with the same integrity we bring to our own family."
-                </p>
+            <div>
+                <div class="text-2xl font-extrabold text-[#002D62]">4</div>
+                <div class="text-gray-400 text-[10px]">Pillars</div>
+            </div>
+            <div>
+                <div class="text-2xl font-extrabold text-[#002D62]">1</div>
+                <div class="text-gray-400 text-[10px]">Contact</div>
+            </div>
+            <div>
+                <div class="text-2xl font-extrabold text-[#002D62]">0</div>
+                <div class="text-gray-400 text-[10px]">Delays</div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form -->
-    <section id="contact-section" class="py-20 px-6">
-        <div class="max-w-xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-            <div class="bg-[#002D62] p-8 text-white text-center">
-                <h2 class="text-2xl font-bold">Get in Touch</h2>
-                <p class="opacity-80">Submit your project details below</p>
-            </div>
-            <form action="YOUR_GOOGLE_FORM_URL_HERE" method="POST" class="p-8 space-y-4">
-                <input type="text" name="entry.123" placeholder="Full Name"
-                    class="w-full p-3 border rounded-lg focus:border-purple-500 outline-none">
-                <input type="text" name="entry.456" placeholder="Company Name"
-                    class="w-full p-3 border rounded-lg focus:border-purple-500 outline-none">
-                <input type="email" name="entry.789" placeholder="Email Address"
-                    class="w-full p-3 border rounded-lg focus:border-purple-500 outline-none">
-                <textarea name="entry.000" placeholder="Message" rows="4"
-                    class="w-full p-3 border rounded-lg focus:border-purple-500 outline-none"></textarea>
-                <button type="submit"
-                    class="w-full bg-purple-600 text-white font-bold py-3 rounded-lg hover:bg-purple-700 transition">SEND
-                    MESSAGE</button>
-            </form>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-[#002D62] text-white py-12 px-6 text-center">
+    <!-- ═════════════ WHO WE SERVE (Blueprint Pattern) ═════════════ -->
+    <section class="py-20 md:py-24 px-6 blueprint-grid">
         <div class="container-normal">
-            <img src="logo.jpg" alt="Pyzeit" class="h-60 mx-auto mb-30 brightness-200 object-contain">
-            <p class="text-2xl font-bold text-cyan-400 mb-2">info@pyzeit.com</p>
-            <p class="text-lg tracking-widest text-gray-400 uppercase">Bangalore, India</p>
-            <div class="mt-8 pt-8 border-t border-gray-700 opacity-50 text-xs">
-                © 2026 Pyzeit Corporate Solutions Private Limited.
+            <div class="text-center mb-14 reveal">
+                <p class="text-[#8A2BE2] text-sm font-bold uppercase tracking-wider mb-3">Who Comes to Pyzeit</p>
+                <h2 class="text-3xl md:text-4xl text-[#002D62] mb-4">Built for Builders</h2>
+                <p class="text-gray-500 max-w-lg mx-auto">You don't need another vendor. You need a partner who
+                    understands full picture.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="card serve-card reveal">
+                    <div class="serve-icon bg-purple-50">🚀</div>
+                    <h4 class="text-[#002D62] text-base font-bold mb-2">First-Time Founders</h4>
+                    <p class="text-gray-500 text-sm">Registering your company, building your brand, launching your
+                        website — all for first time. We'll walk you through every step.</p>
+                </div>
+                <div class="card serve-card reveal">
+                    <div class="serve-icon bg-cyan-50">📈</div>
+                    <h4 class="text-[#002D62] text-base font-bold mb-2">Growing Businesses</h4>
+                    <p class="text-gray-500 text-sm">Revenue is coming in but branding is inconsistent, tech is patchy,
+                        and marketing is scattered. We bring order to chaos.</p>
+                </div>
+                <div class="card serve-card reveal">
+                    <div class="serve-icon bg-blue-50">🏢</div>
+                    <h4 class="text-[#002D62] text-base font-bold mb-2">Professional Firms</h4>
+                    <p class="text-gray-500 text-sm">Consultants, freelancers, and agencies who need a polished digital
+                        presence and proper compliance — without hiring in-house.</p>
+                </div>
+                <div class="card serve-card reveal">
+                    <div class="serve-icon bg-indigo-50">🌏</div>
+                    <h4 class="text-[#002D62] text-base font-bold mb-2">Cross-Border Entrepreneurs</h4>
+                    <p class="text-gray-500 text-sm">Setting up in India from abroad? We handle regulatory basics
+                        while you focus on your market entry.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═════════════ SERVICES ═════════════ -->
+    <section id="services" class="py-20 md:py-24 px-6 bg-gray-50">
+        <div class="container-normal">
+            <div class="text-center mb-6 reveal">
+                <p class="text-[#8A2BE2] text-sm font-bold uppercase tracking-wider mb-3">Everything You Need</p>
+                <h2 class="text-3xl md:text-4xl text-[#002D62] mb-4">Four Pillars. Zero Gaps.</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">Each service is designed to work in combination with
+                    others.</p>
+            </div>
+
+            <div class="flex gap-2 overflow-x-auto pb-4 mb-8 md:hidden">
+                <button class="pillar-tab active" onclick="showPillar('all', this)">All</button>
+                <button class="pillar-tab" onclick="showPillar('foundation', this)">Foundation</button>
+                <button class="pillar-tab" onclick="showPillar('identity', this)">Identity</button>
+                <button class="pillar-tab" onclick="showPillar('engine', this)">Engine</button>
+                <button class="pillar-tab" onclick="showPillar('growth', this)">Growth</button>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5" id="services-grid">
+                <div class="card service-card purple-accent p-6 reveal" data-pillar="foundation">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-content-center mb-4 text-lg">
+                        🏛️</div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold text-purple-400 uppercase tracking-widest">Pillar 01</span>
+                        <span class="text-[10px] font-bold text-gray-300">4 services</span>
+                    </div>
+                    <h3 class="text-[#002D62] text-base font-bold mb-1">The Foundation</h3>
+                    <p class="text-gray-400 text-xs mb-4 italic">The bedrock no business can skip.</p>
+                    <ul class="text-gray-600 space-y-2.5 text-sm">
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-purple-100 text-purple-700">01</span>Company Registration</li>
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-purple-100 text-purple-700">02</span>GST Registration</li>
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-purple-100 text-purple-700">03</span>Contract Drafting & Review
+                        </li>
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-purple-100 text-purple-700">04</span>Business Licenses (FSSAI,
+                            MSME)</li>
+                    </ul>
+                    <p class="text-[10px] text-gray-400 mt-4 leading-relaxed">Comprehensive legal and compliance setup
+                        managed end-to-end.</p>
+                </div>
+
+                <div class="card service-card cyan-accent p-6 reveal" data-pillar="identity">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-100 flex items-center justify-content-center mb-4 text-lg">
+                        🎨</div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold text-cyan-500 uppercase tracking-widest">Pillar 02</span>
+                        <span class="text-[10px] font-bold text-gray-300">4 services</span>
+                    </div>
+                    <h3 class="text-[#002D62] text-base font-bold mb-1">The Identity</h3>
+                    <p class="text-gray-400 text-xs mb-4 italic">How market recognizes you.</p>
+                    <ul class="text-gray-600 space-y-2.5 text-sm">
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-cyan-100 text-cyan-700">05</span>Logo & Visual Identity</li>
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-cyan-100 text-cyan-700">06</span>Complete Brand System</li>
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-cyan-100 text-cyan-700">07</span>Brand Strategy & Positioning
+                        </li>
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-cyan-100 text-cyan-700">08</span>Pitch Deck & Investor Kits</li>
+                    </ul>
+                </div>
+
+                <div class="card service-card blue-accent p-6 reveal" data-pillar="engine">
+                    <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-content-center mb-4 text-lg">
+                        ⚙️</div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Pillar 03</span>
+                        <span class="text-[10px] font-bold text-gray-300">3 services</span>
+                    </div>
+                    <h3 class="text-[#002D62] text-base font-bold mb-1">The Engine</h3>
+                    <p class="text-gray-400 text-xs mb-4 italic">The technology behind your business.</p>
+                    <ul class="text-gray-600 space-y-2.5 text-sm">
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-blue-100 text-blue-700">09</span>Website Design & Development
+                        </li>
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-blue-100 text-blue-700">10</span>UI/UX Design & Prototyping</li>
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-blue-100 text-blue-700">11</span>SEO Technical Architecture</li>
+                    </ul>
+                </div>
+
+                <div class="card service-card indigo-accent p-6 reveal" data-pillar="growth">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-content-center mb-4 text-lg">
+                        📈</div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold text-indigo-500 uppercase tracking-widest">Pillar 04</span>
+                        <span class="text-[10px] font-bold text-gray-300">3 services</span>
+                    </div>
+                    <h3 class="text-[#002D62] text-base font-bold mb-1">The Growth</h3>
+                    <p class="text-gray-400 text-xs mb-4 italic">How market finds you.</p>
+                    <ul class="text-gray-600 space-y-2.5 text-sm">
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-indigo-100 text-indigo-700">12</span>Digital Marketing Strategy
+                        </li>
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-indigo-100 text-indigo-700">13</span>Social Media Management
+                        </li>
+                        <li class="flex items-center gap-2"><span
+                                class="service-count bg-indigo-100 text-indigo-700">14</span>Content Marketing & SEO
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="max-w-2xl mx-auto mt-10 reveal">
+                <div class="expanding-note">
+                    <div class="flex items-start gap-3">
+                        <div class="text-lg flex-shrink-0 mt-0.5">🌱</div>
+                        <div>
+                            <h5 class="text-[#002D62] font-bold text-sm mb-1">Actively Expanding</h5>
+                            <p class="text-gray-500 text-sm leading-relaxed">We're a young firm deliberately starting
+                                focused. As we grow our team, we'll add services like e-commerce, mobile apps,
+                                accounting, and performance advertising — without compromising quality on what we
+                                already deliver.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═════════════ HOW IT WORKS ═════════════ -->
+    <section id="process" class="py-20 md:py-24 px-6 bg-white">
+        <div class="container-normal">
+            <div class="text-center mb-14 reveal">
+                <p class="text-[#8A2BE2] text-sm font-bold uppercase tracking-wider mb-3">No Guesswork</p>
+                <h2 class="text-3xl md:text-4xl text-[#002D62] mb-4">How We Work With You</h2>
+                <p class="text-gray-500 max-w-lg mx-auto">A straightforward process — no complicated onboarding, no
+                    surprises.</p>
+            </div>
+            <div class="max-w-2xl mx-auto">
+                <div class="process-step reveal">
+                    <div class="process-number">1</div>
+                    <h4 class="text-[#002D62] text-lg font-bold mb-1">Discovery Conversation</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">A 30-minute call where we listen — not pitch. We
+                        learn about your business stage, pain points, and what success looks like for you.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-number">2</div>
+                    <h4 class="text-[#002D62] text-lg font-bold mb-1">Tailored Scope & Pricing</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Within 48 hours, you receive a clear proposal —
+                        which services, why, what it costs, and how long it takes.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-number">3</div>
+                    <h4 class="text-[#002D62] text-lg font-bold mb-1">Unified Execution</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Our teams work together — your brand designer talks
+                        to your web developer, your legal partner reviews your website copy. One synchronized workflow.
+                    </p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-number">4</div>
+                    <h4 class="text-[#002D62] text-lg font-bold mb-1">Delivery & Continued Partnership</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">You receive everything as agreed. Then we stay —
+                        supporting tweaks, answering questions, and helping you adapt as your business evolves.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═════════════ WHY PYZEIT (Blueprint Pattern) ═════════════ -->
+    <section class="py-20 md:py-24 px-6 blueprint-grid">
+        <div class="container-normal">
+            <div class="text-center mb-14 reveal">
+                <p class="text-[#8A2BE2] text-sm font-bold uppercase tracking-wider mb-3">The Honest Difference</p>
+                <h2 class="text-3xl md:text-4xl text-[#002D62] mb-4">What Actually Changes</h2>
+                <p class="text-gray-500 max-w-lg mx-auto">Not marketing fluff. Real, operational differences you'll feel
+                    from day one.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+                <div class="get-item reveal">
+                    <div class="get-icon bg-purple-50">🎯</div>
+                    <div>
+                        <h5 class="text-[#002D62] font-bold text-sm mb-1">One Phone Call, Not Five</h5>
+                        <p class="text-gray-500 text-sm">Need a legal update, a website change, and a new ad campaign?
+                            One message handles all three.</p>
+                    </div>
+                </div>
+                <div class="get-item reveal">
+                    <div class="get-icon bg-cyan-50">🔗</div>
+                    <div>
+                        <h5 class="text-[#002D62] font-bold text-sm mb-1">Services That Talk to Each Other</h5>
+                        <p class="text-gray-500 text-sm">Your legal terms inform your website copy. Your brand
+                            guidelines shape your social posts.</p>
+                    </div>
+                </div>
+                <div class="get-item reveal">
+                    <div class="get-icon bg-blue-50">⚡</div>
+                    <div>
+                        <h5 class="text-[#002D62] font-bold text-sm mb-1">No Inter-Agency Delays</h5>
+                        <p class="text-gray-500 text-sm">When everything runs on one timeline with one coordinator,
+                            things move faster.</p>
+                    </div>
+                </div>
+                <div class="get-item reveal">
+                    <div class="get-icon bg-green-50">💰</div>
+                    <div>
+                        <h5 class="text-[#002D62] font-bold text-sm mb-1">Bundled = Lower Total Cost</h5>
+                        <p class="text-gray-500 text-sm">Combining services eliminates redundant work — savings pass to
+                            you.</p>
+                    </div>
+                </div>
+                <div class="get-item reveal">
+                    <div class="get-icon bg-orange-50">🛡️</div>
+                    <div>
+                        <h5 class="text-[#002D62] font-bold text-sm mb-1">Compliance Built In</h5>
+                        <p class="text-gray-500 text-sm">Because we handle legal and digital together, issues get caught
+                            before they become problems.</p>
+                    </div>
+                </div>
+                <div class="get-item reveal">
+                    <div class="get-icon bg-indigo-50">👤</div>
+                    <div>
+                        <h5 class="text-[#002D62] font-bold text-sm mb-1">You Talk to Founder</h5>
+                        <p class="text-gray-500 text-sm">No account managers relaying messages. You work directly with
+                            person who runs firm.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-2xl mx-auto reveal">
+                <div class="card overflow-hidden p-0">
+                    <table class="w-full" style="border-collapse:separate; border-spacing:0;">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="text-left text-gray-400 text-[11px] font-bold uppercase tracking-wider p-4">
+                                    Feature</th>
+                                <th
+                                    class="text-center text-gray-400 text-[11px] font-bold uppercase tracking-wider p-4">
+                                    Hiring Separately</th>
+                                <th
+                                    class="text-center text-[#002D62] text-[11px] font-bold uppercase tracking-wider p-4 bg-blue-50/50">
+                                    Pyzeit</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr>
+                                <td class="p-4 font-medium text-[#002D62] border-b border-gray-100">Vendors</td>
+                                <td class="p-4 text-center text-gray-500 border-b border-gray-100">3–5 firms</td>
+                                <td
+                                    class="p-4 text-center font-bold text-[#8A2BE2] border-b border-gray-100 bg-blue-50/30">
+                                    1 contact</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-medium text-[#002D62] border-b border-gray-100">Alignment</td>
+                                <td class="p-4 text-center text-gray-500 border-b border-gray-100">Isolated</td>
+                                <td
+                                    class="p-4 text-center font-bold text-[#8A2BE2] border-b border-gray-100 bg-blue-50/30">
+                                    Integrated</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-medium text-[#002D62] border-b border-gray-100">Communication</td>
+                                <td class="p-4 text-center text-gray-500 border-b border-gray-100">Multiple threads</td>
+                                <td
+                                    class="p-4 text-center font-bold text-[#8A2BE2] border-b border-gray-100 bg-blue-50/30">
+                                    Single channel</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-medium text-[#002D62] border-b border-gray-100">Contracts</td>
+                                <td class="p-4 text-center text-gray-500 border-b border-gray-100">Annual lock-ins</td>
+                                <td
+                                    class="p-4 text-center font-bold text-[#8A2BE2] border-b border-gray-100 bg-blue-50/30">
+                                    No lock-in</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-medium text-[#002D62] border-b border-gray-100">After delivery</td>
+                                <td class="p-4 text-center text-gray-500">Ends at handoff</td>
+                                <td class="p-4 text-center font-bold text-[#8A2BE2] bg-blue-50/30">Ongoing</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═════════════ PYZEIT PROMISE ═════════════ -->
+    <section class="py-20 md:py-24 px-6 bg-[#002D62] text-white">
+        <div class="container-normal">
+            <div class="text-center mb-14 reveal">
+                <p class="text-[#00BFFF] text-sm font-bold uppercase tracking-wider mb-3">Non-Negotiables</p>
+                <h2 class="text-3xl md:text-4xl mb-4">The Pyzeit Promise</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 reveal"
+                    style="border-top:4px solid #00BFFF;">
+                    <div class="text-2xl mb-3">⚡</div>
+                    <h4 class="font-bold mb-2">Precision</h4>
+                    <p class="text-white/50 text-sm leading-relaxed">Every deliverable is intentional. We don't produce
+                        filler to justify an invoice.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 reveal"
+                    style="border-top:4px solid #8A2BE2;">
+                    <div class="text-2xl mb-3">⏱️</div>
+                    <h4 class="font-bold mb-2">Right Timing</h4>
+                    <p class="text-white/50 text-sm leading-relaxed">We don't upsell services you don't need yet.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 reveal"
+                    style="border-top:4px solid #0070F3;">
+                    <div class="text-2xl mb-3">📈</div>
+                    <h4 class="font-bold mb-2">Growth-Led</h4>
+                    <p class="text-white/50 text-sm leading-relaxed">Every recommendation: does this help client
+                        grow?</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 reveal"
+                    style="border-top:4px solid #00C47D;">
+                    <div class="text-2xl mb-3">🔒</div>
+                    <h4 class="font-bold mb-2">Honesty</h4>
+                    <p class="text-white/50 text-sm leading-relaxed">If we can't do something well, we'll tell you
+                        upfront.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═════════════ FOUNDER ═════════════ -->
+    <section id="founder" class="py-20 md:py-24 px-6 bg-white">
+        <div class="container-normal">
+            <div class="text-center mb-14 reveal">
+                <p class="text-[#8A2BE2] text-sm font-bold uppercase tracking-wider mb-3">Leadership</p>
+                <h2 class="text-3xl md:text-4xl text-[#002D62]">Behind Pyzeit</h2>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="card p-8 md:p-12 reveal">
+                    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                        <div class="flex-shrink-0">
+                            <div class="founder-img-wrapper">
+                                <img src="https://z-cdn-media.chatglm.cn/files/c678f9ac-e40f-4672-bae4-7c7d9bbe6948.png?auth_key=1878087420-cd1fed6a792b4f9c8de24306fdf96a8f-0-40e3e3e828b97221845c701ce6af4e1b"
+                                    alt="Founder & Managing Director" class="founder-img"
+                                    onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23002D62%22 width=%22200%22 height=%22200%22/><text x=%2250%25%22 y=%2250%22 fill=%22white%22 font-size=%2260%22 text-anchor=%22middle%22 dy=%22.3em%22>P</text></svg>'">
+                            </div>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <div
+                                class="inline-block bg-[#002D62] text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">
+                                Founder & Managing Director</div>
+                            <h3 class="text-2xl md:text-3xl text-[#002D62] mb-3">Pyzeit Corporate Solutions</h3>
+                            <p class="text-gray-500 text-sm mb-5 leading-relaxed">Pyzeit was born from a real
+                                frustration: watching businesses stumble because their lawyer didn't talk to their
+                                developer, their designer didn't understand compliance, and their marketer had no
+                                visibility into financial reality. The founder decided to build the firm they wished
+                                existed — one team, one vision, one phone number.</p>
+                            <blockquote
+                                class="text-lg text-gray-700 italic leading-relaxed border-l-4 border-[#8A2BE2] pl-5 mb-6">
+                                "We don't see ourselves as a service provider. We see ourselves as the operational
+                                partner a business deserves but rarely finds."</blockquote>
+                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3">
+                                <a href="https://linkedin.com" target="_blank"
+                                    class="inline-flex items-center gap-2 bg-gray-100 hover:bg-[#002D62] hover:text-white text-[#002D62] px-4 py-2 rounded-lg text-sm font-semibold transition"><svg
+                                        width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    </svg>LinkedIn</a>
+                                <a href="mailto:info@pyzeit.com"
+                                    class="inline-flex items-center gap-2 bg-gray-100 hover:bg-[#002D62] hover:text-white text-[#002D62] px-4 py-2 rounded-lg text-sm font-semibold transition"><svg
+                                        width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
+                                    </svg>Email</a>
+                                <a href="https://wa.me/91XXXXXXXXXX" target="_blank"
+                                    class="inline-flex items-center gap-2 bg-green-50 hover:bg-green-500 hover:text-white text-green-700 px-4 py-2 rounded-lg text-sm font-semibold transition"><svg
+                                        width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                                        <path
+                                            d="M12.004 2C6.476 2 2 6.476 2 12.004a9.93 9.93 0 001.374 5.078L2 22l5.09-1.354A9.93 9.93 0 0012.004 22C17.532 22 17.524 22 12.004 22 6.476 17.532 2 12.004 2z" />
+                                    </svg>WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- "The Bangalore-Berlin Bridge" Card -->
+                <div
+                    class="mt-10 p-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl text-center reveal shadow-sm">
+                    <div class="text-4xl mb-3">🌉</div>
+                    <h4 class="text-[#002D62] font-bold text-xl mb-2">The Bangalore-Berlin Bridge</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed max-w-2xl mx-auto">
+                        Our Founder holds an <strong>MS from Germany</strong>, creating a vital bridge between the
+                        entrepreneurial energy of Bangalore and the technological precision of Berlin. This unique
+                        connection allows Pyzeit to deliver global-standard services with local market insights.
+                    </p>
+                    <div
+                        class="flex justify-center gap-6 mt-6 text-xs font-semibold tracking-wider text-gray-400 uppercase">
+                        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#002D62]"></span>
+                            Indian Roots</span>
+                        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#002D62]"></span>
+                            German Precision</span>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+                    <div class="card value-card reveal">
+                        <div class="text-xl flex-shrink-0">🤝</div>
+                        <div>
+                            <h5 class="text-[#002D62] font-bold text-sm mb-1">Partner, Not Vendor</h5>
+                            <p class="text-gray-500 text-sm">We succeed when you succeed.</p>
+                        </div>
+                    </div>
+                    <div class="card value-card reveal">
+                        <div class="text-xl flex-shrink-0">🔍</div>
+                        <div>
+                            <h5 class="text-[#002D62] font-bold text-sm mb-1">Radical Transparency</h5>
+                            <p class="text-gray-500 text-sm">Clear pricing, honest timelines.</p>
+                        </div>
+                    </div>
+                    <div class="card value-card reveal">
+                        <div class="text-xl flex-shrink-0">📐</div>
+                        <div>
+                            <h5 class="text-[#002D62] font-bold text-sm mb-1">Focused Over Scattered</h5>
+                            <p class="text-gray-500 text-sm">14 things excellently > 29 mediocrely.</p>
+                        </div>
+                    </div>
+                    <div class="card value-card reveal">
+                        <div class="text-xl flex-shrink-0">💡</div>
+                        <div>
+                            <h5 class="text-[#002D62] font-bold text-sm mb-1">Craft Without Pretense</h5>
+                            <p class="text-gray-500 text-sm">Quality without slow-delivery excuses.</p>
+                        </div>
+                    </div>
+                    <div class="card value-card reveal">
+                        <div class="text-xl flex-shrink-0">🌍</div>
+                        <div>
+                            <h5 class="text-[#002D62] font-bold text-sm mb-1">Geography Is Irrelevant</h5>
+                            <p class="text-gray-500 text-sm">Good work doesn't require proximity.</p>
+                        </div>
+                    </div>
+                    <div class="card value-card reveal">
+                        <div class="text-xl flex-shrink-0">🧭</div>
+                        <div>
+                            <h5 class="text-[#002D62] font-bold text-sm mb-1">Long-Term Orientation</h5>
+                            <p class="text-gray-500 text-sm">Recommendations for year three, not week one.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════ PHILOSOPHY ═════════════ (NEW SECTION) ═════════════ -->
+    <section id="philosophy" class="py-20 md:py-24 px-6 bg-white">
+        <div class="container-normal">
+            <div class="text-center mb-12 reveal">
+                <p class="text-[#8A2BE2] text-sm font-bold uppercase tracking-wider mb-3">Our Philosophy</p>
+                <h2 class="text-3xl md:text-4xl text-[#002D62] mb-8">Defining The Future</h2>
+            </div>
+
+            <!-- Philosophy Section Design -->
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+
+                    <!-- Vision Card -->
+                    <div class="philosophy-card reveal">
+                        <div class="philosophy-title">The Vision</div>
+                        <div class="philosophy-content">
+                            <div class="vision-icon">🌐</div>
+                            <p class="mb-2">To be the global cornerstone where business logic meets creative magic,
+                                empowering every entrepreneur to build a legacy without limits.</p>
+                            <p class="text-gray-400 text-sm mt-4">We visualize a world where barriers are dissolved.</p>
+                        </div>
+                    </div>
+
+                    <!-- Mission Card -->
+                    <div class="philosophy-card reveal">
+                        <div class="philosophy-title">The Mission</div>
+                        <div class="philosophy-content">
+                            <div class="mission-icon">🚀</div>
+                            <p class="mb-2">Our mission is to simplify the complex.</p>
+                            <p class="text-gray-600 text-sm mt-4">
+                                We provide a seamless bridge between compliance and creativity, ensuring our clients are
+                                legally secure, financially sound, and digitally dominant.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════ FAQ ═════════════ -->
+    <section id="faq" class="py-20 md:py-24 px-6 bg-gray-50">
+        <div class="container-normal">
+            <div class="text-center mb-14 reveal">
+                <p class="text-[#8A2BE2] text-sm font-bold uppercase tracking-wider mb-3">Straight Answers</p>
+                <h2 class="text-3xl md:text-4xl text-[#002D62] mb-4">Questions We Get Asked</h2>
+            </div>
+            <div class="max-w-2xl mx-auto space-y-3">
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFAQ(this)"><span>What does "partner" mean for Foundation
+                            services?</span><span class="faq-icon text-xl text-gray-400">+</span></div>
+                    <div class="faq-answer text-gray-500 text-sm leading-relaxed">For company registration, GST,
+                        contracts, and licenses — we work with qualified CAs and legal professionals we've vetted. You
+                        still deal only with Pyzeit: we coordinate, manage quality, and handle all communication.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFAQ(this)"><span>Why only specific services instead of
+                            more?</span><span class="faq-icon text-xl text-gray-400">+</span></div>
+                    <div class="faq-answer text-gray-500 text-sm leading-relaxed">We'd rather deliver our core services
+                        with
+                        real depth than list 30 and deliver them superficially. As we grow our team, we'll add services
+                        — but only when we can do them properly.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFAQ(this)"><span>How is Pyzeit different from a CA firm + a
+                            design agency?</span><span class="faq-icon text-xl text-gray-400">+</span></div>
+                    <div class="faq-answer text-gray-500 text-sm leading-relaxed">A CA firm handles compliance. A design
+                        agency handles visuals. Neither talks to other. At Pyzeit, the person filing your GST
+                        understands your brand, and your developer has reviewed your legal structure. That
+                        cross-awareness eliminates mistakes.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFAQ(this)"><span>How quickly can my project
+                            start?</span><span class="faq-icon text-xl text-gray-400">+</span></div>
+                    <div class="faq-answer text-gray-500 text-sm leading-relaxed">Typically within 3-5 business days.
+                        Some services like company registration can begin within 24 hours.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFAQ(this)"><span>I'm based outside India. Can you still
+                            help?</span><span class="faq-icon text-xl text-gray-400">+</span></div>
+                    <!-- UPDATED FAQ ANSWER -->
+                    <div class="faq-answer text-gray-500 text-sm leading-relaxed">
+                        Yes, absolutely. Our founder completed his MS in Germany and holds strong connections with
+                        European Union, making us uniquely equipped to assist global businesses.
+                        <br><br>
+                        Our name "Pyzeit" itself reflects our philosophy: <strong>"Py"</strong> for Technology and
+                        <strong>"Zeit"</strong> (German for Time). We believe in adopting technology to save you time
+                        and deliver premium service to all clients, whether you are in Europe, US, or anywhere else in
+                        the world.
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFAQ(this)"><span>Are there long-term contracts?</span><span
+                            class="faq-icon text-xl text-gray-400">+</span></div>
+                    <div class="faq-answer text-gray-500 text-sm leading-relaxed">No. Every engagement is project-based
+                        with defined deliverables and costs.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="toggleFAQ(this)"><span>What if I only need one service — like
+                            just a logo?</span><span class="faq-icon text-xl text-gray-400">+</span></div>
+                    <div class="faq-answer text-gray-500 text-sm leading-relaxed">That's completely fine. Many clients
+                        start with a single need and expand over time.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═════════════ CTA ═════════════ -->
+    <section class="cta-gradient py-20 px-6 text-white">
+        <div class="container-normal text-center">
+            <div class="max-w-2xl mx-auto reveal">
+                <h2 class="text-3xl md:text-4xl mb-6">Your Business Deserves Better<br>Than Five Different Vendors</h2>
+                <p class="text-lg text-white/60 mb-8">Let's have a 30-minute conversation — no pitch, no pressure. Just
+                    clarity.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#contact"
+                        class="bg-white text-[#002D62] px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition text-sm">Start
+                        a Conversation →</a>
+                    <a href="https://wa.me/91XXXXXXXXXX" target="_blank"
+                        class="border border-white/30 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition text-sm">WhatsApp
+                        Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═════════════ CONTACT ═════════════ -->
+    <section id="contact" class="py-20 md:py-24 px-6 bg-white">
+        <div class="container-normal">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-10 reveal">
+                    <p class="text-[#8A2BE2] text-sm font-bold uppercase tracking-wider mb-3">Let's Talk</p>
+                    <h2 class="text-3xl md:text-4xl text-[#002D62] mb-3">Tell Us About Your Business</h2>
+                    <p class="text-gray-500 text-sm">You'll hear back from
+                        founder directly — usually within a few
+                        hours.</p>
+                </div>
+
+                <!-- Navigation Anchors added -->
+                <div class="flex flex-wrap justify-center gap-4 mb-6 text-xs text-gray-400">
+                    <a href="#services" class="hover:text-[#8A2BE2] hover:underline decoration-gray-300">Services</a>
+                    <a href="#process" class="hover:text-[#8A2BE2] hover:underline decoration-gray-300">How It Works</a>
+                    <a href="#founder" class="hover:text-[#8A2BE2] hover:underline decoration-gray-300">Founder</a>
+                    <a href="#philosophy"
+                        class="hover:text-[#8A2BE2] hover:underline decoration-gray-300">Philosophy</a>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 reveal">
+                    <div class="bg-[#002D62] p-6 md:p-8 text-white">
+                        <h3 class="text-lg font-bold mb-1">What happens next?</h3>
+                        <p class="text-white/60 text-sm">We review your details, and if it's a fit, we schedule a free
+                            30-minute discovery call. No automated replies.</p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="bg-white/10 text-xs px-3 py-1 rounded-full text-[#00BFFF]">✓ No
+                                obligation</span>
+                            <span class="bg-white/10 text-xs px-3 py-1 rounded-full text-[#00BFFF]">✓ No spam</span>
+                            <span class="bg-white/10 text-xs px-3 py-1 rounded-full text-[#00BFFF]">✓ Founder
+                                responds</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 border-b border-gray-100">
+                        <a href="https://wa.me/91XXXXXXXXXX" target="_blank"
+                            class="flex flex-col items-center gap-2 py-5 text-center hover:bg-green-50 transition border-r border-gray-100">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                                <svg width="20" height="20" fill="#25D366" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.497-.099.198.05.371-.025.52-.075.149-.669 1.612-.916 2.207-.242.579-.487.5-.669.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                                    <path
+                                        d="M12.004 2C6.476 2 2 6.476 2 12.004a9.93 9.93 0 001.374 5.078L2 22l5.09-1.354A9.93 9.93 0 0012.004 22C17.532 22 17.524 22 12.004 22 6.476 17.532 2 12.004 2z" />
+                                </svg>
+                            </div><span class="text-xs font-semibold text-gray-600">WhatsApp</span>
+                        </a>
+                        <a href="mailto:info@pyzeit.com"
+                            class="flex flex-col items-center gap-2 py-5 text-center hover:bg-blue-50 transition border-r border-gray-100">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                <svg width="20" height="20" fill="none" stroke="#1d4ed8" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                            </div><span class="text-xs font-semibold text-gray-600">Email</span>
+                        </a>
+                        <a href="tel:+91XXXXXXXXXX"
+                            class="flex flex-col items-center gap-2 py-5 text-center hover:bg-purple-50 transition">
+                            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
+                                <svg width="20" height="20" fill="none" stroke="#8A2BE2" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                            </div><span class="text-xs font-semibold text-gray-600">Call</span>
+                        </a>
+                    </div>
+                    <form action="YOUR_GOOGLE_FORM_URL_HERE" method="POST" class="p-6 md:p-8 space-y-4">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <input type="text" name="entry.123" placeholder="Full Name" required
+                                class="w-full p-3 border border-gray-200 rounded-lg focus:border-[#8A2BE2] outline-none text-sm transition">
+                            <input type="text" name="entry.456" placeholder="Company Name"
+                                class="w-full p-3 border border-gray-200 rounded-lg focus:border-[#8A2BE2] outline-none text-sm transition">
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <input type="email" name="entry.789" placeholder="Email Address" required
+                                class="w-full p-3 border border-gray-200 rounded-lg focus:border-[#8A2BE2] outline-none text-sm transition">
+                            <input type="tel" name="entry.phone" placeholder="Phone / WhatsApp"
+                                class="w-full p-3 border border-gray-200 rounded-lg focus:border-[#8A2BE2] outline-none text-sm transition">
+                        </div>
+                        <select name="entry.111" required
+                            class="w-full p-3 border border-gray-200 rounded-lg focus:border-[#8A2BE2] outline-none text-sm text-gray-500 bg-white transition">
+                            <option value="" disabled selected>What do you need help with?</option>
+                            <option>Company Registration & Compliance</option>
+                            <option>Branding & Design</option>
+                            <option>Website Development</option>
+                            <option>Digital Marketing & Growth</option>
+                            <option>Multiple Services</option>
+                            <option>Not sure — need guidance</option>
+                        </select>
+                        <textarea name="entry.000"
+                            placeholder="Briefly describe your business and what you're looking to achieve..." rows="4"
+                            class="w-full p-3 border border-gray-200 rounded-lg focus:border-[#8A2BE2] outline-none text-sm transition"></textarea>
+                        <button type="submit"
+                            class="w-full bg-[#002D62] text-white font-bold py-3.5 rounded-lg hover:bg-[#8A2BE2] transition text-sm">Send
+                            to Founder →</button>
+                        <p class="text-center text-gray-400 text-xs">Or email directly: <a href="mailto:info@pyzeit.com"
+                                class="text-[#8A2BE2] hover:underline">info@pyzeit.com</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═════════════ FOOTER ═════════════ -->
+    <footer class="bg-[#002D62] text-white py-14 px-6">
+        <div class="container-normal">
+            <div class="grid md:grid-cols-4 gap-10 mb-10 border-b border-white/10 pb-10">
+                <div>
+                    <!-- FOOTER LOGO UPDATED -->
+                    <!-- Changed: src matches header, removed brightness-0 invert classes -->
+                    <img src="https://z-cdn-media.chatglm.cn/files/b32af940-6b89-40f4-adb0-31a07624901d.jpg?auth_key=1878090161-caa0df92ef1d428397a995a6f65efbb9-0-bd209449fafcee4ec83e9b866d518cf3"
+                        alt="Pyzeit" class="footer-logo-img">
+
+                    <p class="text-white/40 text-sm leading-relaxed mb-4">One Partner. Every Stage.<br>Legal. Brand.
+                        Tech. Growth.</p>
+                    <div class="flex gap-4">
+                        <a href="https://linkedin.com" target="_blank"
+                            class="text-white/30 hover:text-[#00BFFF] transition"><svg width="18" height="18"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 0 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg></a>
+                        <a href="https://instagram.com" target="_blank"
+                            class="text-white/30 hover:text-[#00BFFF] transition"><svg width="18" height="18"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg></a>
+                        <a href="https://twitter.com" target="_blank"
+                            class="text-white/30 hover:text-[#00BFFF] transition"><svg width="18" height="18"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold text-[11px] uppercase tracking-wider text-white/30 mb-4">Company</h5>
+                    <ul class="space-y-2.5 text-sm text-white/50">
+                        <li><a href="#founder" class="hover:text-[#00BFFF] transition">About</a></li>
+                        <li><a href="#process" class="hover:text-[#00BFFF] transition">How It Works</a></li>
+                        <li><a href="#faq" class="hover:text-[#00BFFF] transition">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-[11px] uppercase tracking-wider text-white/30 mb-4">Services</h5>
+                    <ul class="space-y-2.5 text-sm text-white/50">
+                        <li><a href="#services" class="hover:text-[#00BFFF] transition">Legal & Compliance</a></li>
+                        <li><a href="#services" class="hover:text-[#00BFFF] transition">Brand & Identity</a></li>
+                        <li><a href="#services" class="hover:text-[#00BFFF] transition">Web & Technology</a></li>
+                        <li><a href="#services" class="hover:text-[#00BFFF] transition">Marketing & Growth</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-[11px] uppercase tracking-wider text-white/30 mb-4">Contact</h5>
+                    <ul class="space-y-2.5 text-sm text-white/50">
+                        <li><a href="mailto:info@pyzeit.com" class="hover:text-[#00BFFF] transition">info@pyzeit.com</a>
+                        </li>
+                        <li><a href="https://wa.me/91XXXXXXXXXX" class="hover:text-[#00BFFF] transition">WhatsApp</a>
+                        </li>
+                        <li><a href="tel:+91XXXXXXXXXX" class="hover:text-[#00BFFF] transition">Phone</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/25">
+                <p>© 2025 Pyzeit Corporate Solutions Private Limited. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white/50 transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white/50 transition">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
+
+
+    <!-- Chatbot -->
+    <button id="chatbot-btn" onclick="toggleChat()" aria-label="Chat">
+        <svg id="chat-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+        <svg id="close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" style="display:none;">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+    </button>
+
+    <div id="chatbot-window">
+        <div class="chat-header">
+            <div class="flex items-center gap-3">
+                <img src="https://z-cdn-media.chatglm.cn/files/c678f9ac-e40f-4672-bae4-7c7d9bbe6948.png?auth_key=1878087420-cd1fed6a792b4f9c8de24306fdf96a8f-0-40e3e3e828b97221845c701ce6af4e1b"
+                    alt="Founder" class="w-8 h-8 rounded-full object-cover border-2 border-white/30"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-8 h-8 rounded-full bg-white/20 items-center justify-center text-xs font-bold"
+                    style="display:none;">P</div>
+                <div>
+                    <div class="font-bold text-sm">Founder, Pyzeit</div>
+                    <div class="text-xs text-white/60 flex items-center gap-1.5"><span
+                            class="w-1.5 h-1.5 rounded-full bg-green-400 pulse"></span>Available</div>
+                </div>
+            </div>
+            <button onclick="toggleChat()"
+                class="text-white/60 hover:text-white transition text-xl leading-none">×</button>
+        </div>
+        <div class="p-4 flex flex-col gap-3 bg-gray-50">
+            <div class="bg-white rounded-xl rounded-tl-none p-3 text-sm text-gray-700 shadow-sm max-w-[85%]">Hi — I
+                personally read every message here. What are you building?</div>
+            <div class="text-xs text-gray-400 font-semibold uppercase tracking-wider mt-1">Quick actions</div>
+            <button onclick="window.open('https://wa.me/91XXXXXXXXXX','_blank')" class="quick-btn">
+                <svg width="16" height="16" fill="#25D366" viewBox="0 0 24 24">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.497-.099.198.05.371-.025.52-.075.149-.669 1.612-.916 2.207-.242.579-.487.5-.669.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path
+                        d="M12.004 2C6.476 2 2 6.476 2 12.004a9.93 9.93 0 001.374 5.078L2 22l5.09-1.354A9.93 9.93 0 0012.004 22C17.532 22 17.524 22 12.004 22 6.476 17.532 2 12.004 2z" />
+                </svg>
+                WhatsApp Me
+            </button>
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'}); toggleChat();"
+                class="quick-btn">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                Send Project Details
+            </button>
+            <button onclick="window.location='mailto:info@pyzeit.com'" class="quick-btn">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                Email
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        function toggleChat() {
+            const w = document.getElementById('chatbot-window');
+            const ci = document.getElementById('chat-icon');
+            const xi = document.getElementById('close-icon');
+            w.classList.toggle('open');
+            ci.style.display = w.classList.contains('open') ? 'none' : 'block';
+            xi.style.display = w.classList.contains('open') ? 'block' : 'none';
+        }
+
+        function toggleFAQ(el) {
+            const item = el.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.faq-answer').classList.remove('open');
+            });
+            if (!isActive) { item.classList.add('active'); answer.classList.add('open'); }
+        }
+
+        function showPillar(pillar, btn) {
+            document.querySelectorAll('.pillar-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('#services-grid > div').forEach(card => {
+                if (pillar === 'all' || card.dataset.pillar === pillar) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    setTimeout(() => e.target.classList.add('visible'), 60 * (Array.from(revealEls).indexOf(e.target) % 4));
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        revealEls.forEach(el => observer.observe(el));
+
+        document.querySelectorAll('#mobile-menu a').forEach(a => {
+            a.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
+        });
+    </script>
 
 </body>
 
